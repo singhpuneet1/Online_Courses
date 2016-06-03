@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+
+<head>
+
+<title>Matching Game - Part 4</title>
+
+<style>
+	
+	img{position:absolute}
+	div{position:absolute;width:500px;height:500px}
+	#rightSide{left:500px; border-left:1px solid black}
+	
+
+
+</style>
+
+</head>
+
+
+<body onload="generateFaces()">
+<script>
+
+
+</script>
+
+<h1 id="h1_text" >Matching Game</h1>
+
+<p id="para_text" >Click on the extra smiling face on the left side. You are at Game Level </p>
+
+
+ <div id="leftSide"></div>
+ 
+ <div id="rightSide"></div>
+ 
+
+   <script>
+	
+	var numberOfFaces = 5;
+	var gameLevel = 1;
+	var theLeftSide = document.getElementById("leftSide");
+	var theRightSide = document.getElementById("rightSide");
+	var theBody = document.getElementsByTagName("body")[0]
+	
+	//For Para
+	var thePara = document.getElementById("para_text");
+	
+	function generateFaces(){
+		
+		//for para only
+		the_para = document.createTextNode(gameLevel+".");
+		thePara.appendChild(the_para)
+		
+		///
+		for(var i=1; i<=numberOfFaces; i++)
+		{ 
+			the_img = document.createElement("img");
+			the_img.src = "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png"
+			the_img.style.top = Math.floor(Math.random()*400)+1 +"px";
+			the_img.style.left = Math.floor(Math.random()*400)+1 +"px";
+			
+			theLeftSide.appendChild(the_img)
+			
+		}
+		//Cloning the div branch
+		var leftSideImages = theLeftSide.cloneNode(true);
+		
+		//Deleting the last child
+		var the_lastNode = leftSideImages.lastChild;
+		the_lastNode.parentNode.removeChild(the_lastNode);
+		
+		//Appending to right side div
+		
+		theRightSide.appendChild(leftSideImages);
+		
+		//Adding game logic and interactivity to the last face on the left side
+		
+
+		
+		theLeftSide.lastChild.onclick = function nextLevel(event){
+
+			event.stopPropagation();
+
+			numberOfFaces += 5;
+			gameLevel+=1;
+			
+			
+			//Removing the para child			
+			thePara.removeChild(thePara.lastChild);
+
+
+			//Removing the smilies from the left
+			while(theLeftSide.firstChild)
+			{
+				theLeftSide.removeChild(theLeftSide.firstChild);
+			}
+			//Removing the smilies from the right
+			while(theRightSide.firstChild)
+			{
+				theRightSide.removeChild(theRightSide.firstChild);
+			}			
+			
+			//Calling the function
+			generateFaces();
+		};
+	
+		theBody.onclick = function gameOver() {
+			
+			if(gameLevel<5)
+			{
+				//alert("Game Over!");
+				alert("Game Over Mate! Better luck next time." + "\n\nTotal number of faces at the last game level: "+numberOfFaces+"\n\n"+"You passed "+(gameLevel-1)+" game levels.");
+			}
+			
+			else if(gameLevel>5&&gameLevel<=10)
+			{
+				alert("Game Over! But you played well." + "\n\nTotal number of faces at the last game level: "+numberOfFaces+"\n\n"+"You passed "+(gameLevel-1)+" game levels.");
+			}
+			else if(gameLevel>10)
+			{
+				alert("Game Over! But you have done an amazing job here." + "\n\nTotal number of faces at the last game level: "+numberOfFaces+"\n\n"+"You passed "+(gameLevel-1)+" game levels.");
+			}
+			theBody.onclick = null;
+
+			theLeftSide.lastChild.onclick = null;
+		
+
+		};
+	
+	
+	}
+	
+	
+   </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+
+
+<html>
+<head>
+
+<title>Color Guessing Game - Part 1</title>
+
+
+
+</head>
+
+
+
+<body onload="do_game()">
+
+
+
+<script>
+var target;
+
+var finished = false;
+
+var guess_input_text;
+
+var colors = ["blue", "cyan", "gold", "gray", "green", "magenta", "orange", "red", "white", "yellow"]
+
+/*
+This is the main function that loads when the color guessing game starts.
+- It generates a random number.
+- Executes a while loop, until the entered user is same as the guessed one.
+*/
+function do_game(){
+	
+	//Generating a random number between 1 and 10, inclusive of 1 and 10.
+	var target_float = Math.random();
+	var target_missing = target_float*10;
+	target = Math.floor(target_missing) + 1;
+	//Starting while loop to check if the guess is right or wrong
+	while(!finished){
+	guess_input_text = prompt("I am thinking of one of these colors:"+ "\n\n"+"blue, cyan, gold, gray, green, magenta, orange, red, white, yellow"+"\n\n"
+						+"What color I am thinking of?");
+	
+
+	if(guess_input_text == colors[target-1])
+	{
+		finished = true;
+	}
+	}
+}
+
+
+
+</script>
+
+</body>
+
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+
+<head>
+
+<title>Matching Game - Part 3</title>
+
+<style>
+	
+	img{position:absolute}
+	div{position:absolute;width:500px;height:500px}
+	#rightSide{left:500px; border-left:1px solid black}
+
+
+</style>
+
+</head>
+
+
+<body onload="generateFaces()" id="body_text">
+<script>
+
+
+</script>
+
+<h1 id="h1_text"> Matching Game</h1>
+
+<p id="para_text">	Click on the extra smiling face on the left side. </p>
+
+ <div id="leftSide"></div>
+ 
+ <div id="rightSide"></div>
+   <script>
+	
+	var numberOfFaces = 5;
+	var theLeftSide = document.getElementById("leftSide");
+	var theRightSide = document.getElementById("rightSide");
+	
+	function generateFaces(){
+		
+		for(var i=1; i<=numberOfFaces; i++)
+		{ 
+			the_img = document.createElement("img");
+			the_img.src = "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png"
+			the_img.style.top = Math.floor(Math.random()*400)+1 +"px";
+			the_img.style.left = Math.floor(Math.random()*400)+1 +"px";
+			
+			theLeftSide.appendChild(the_img)
+			
+		}
+		//Cloning the div branch for the right side
+		var leftSideImages = theLeftSide.cloneNode(true);
+		
+		//Deleting the last child on the cloned branch
+		var the_lastNode = leftSideImages.lastChild;
+		the_lastNode.parentNode.removeChild(the_lastNode);
+		
+		//Appending to right side div with the left cloned branch
+		
+		theRightSide.appendChild(leftSideImages);
+	
+	}
+	
+	
+   </script>
+</body>
+</html>

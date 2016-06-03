@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+
+    </style>
+	
+</head>
+<body>
+
+<form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" name="form" enctype="multipart/form-data">
+	<fieldset>
+	<legend>Your Face</legend>
+	<label for="image">
+		
+		Your Image: </label>
+		<input type="file" name="img" id="image">
+		<br>
+		Image Preview: <img id="preview"> 
+	</fieldset>
+
+	<fieldset>
+	<legend>Your General Details</legend>
+			<label for="name">Name:</label> 
+			<input type="text" name="name" id="name" required> <br>
+			<label for="gender">Gender: </label>
+			<input type="radio" name="gender" id="gender" value="male" required> Male
+			<input type="radio" name="gender" id="gender" value="female" required> Female
+			<br>
+			
+			<label for="age">Age:</label> 
+			 <input type="number" name="age" min="18" max="100" step="1" id="age" required> <br>
+			<label for="date">Date of Birth:</label>
+			<input type="date" name="date" min="01-01-1947" id="date"> <br>
+			<label for="favcolor">Favorite Color:</label>
+			<input type="color" name="favcolor" id="favcolor"> <br>
+			<label for="country">Country:</label>
+			<select "name="country" id="country">
+			  <option value=" "></option>
+			  <option value="Canada">Canada</option>
+			  <option value="India">India</option>
+			  <option value="Spain">Spain</option>
+			  <option value="Brazil">Brazil</option>
+			  <option value="NewZealand">New Zealand</option>
+			</select>
+			 
+	</fieldset>
+	
+	<fieldset>
+		<legend>Your Indicators</legend>
+		<label for="height">Height: </label>
+		Short<input type="range" min="0" max="100" step="5" value="50" id="height" name="height">Tall<br>
+		<label for="salary">Salary: </label>
+		Poor<input type="range" min="0" max="100" step="5" value="50" id="salary" name="salary">Rich<br>
+	
+	</fieldset>
+	
+	<fieldset>
+		<legend>Your Contact Information</legend>
+		<label for="email">Email: </label>
+		<input type="email" name="email" id="email" required> <br>
+		<label for="mobile">Mobile: </label>
+		<input type="tel" name="mobile" id="mobile"><br>
+		<label for="address">Address: </label>
+		<input type="textarea" name="address" id="address"><br>
+		<label for="methtocontact">Method to contact you: </label>
+		<input type="checkbox" name="email" value="email" id="email">Email
+		<input type="checkbox" name="whatsapp" value="Wahtsapp" id="whatsapp">Whatsapp
+		<input type="checkbox" name="chat" value="chat" id="chat">In-House-Chat
+		
+	</fieldset>
+	
+	<input type="submit" name="button" id="button" value="Submit">
+</form>
+
+</body>
+</html>

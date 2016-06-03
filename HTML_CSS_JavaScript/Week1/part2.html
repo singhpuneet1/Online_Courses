@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+	fieldset{background-color:lightyellow; border:10px solid yellow; margin-bottom:10px; width:720px;}
+	label {width: 180px; display:inline-block; text-align:right; vertical-align:top;}
+	span.first {text-align:center; background-color:red; color:white;}
+	span.second {text-align:center; background-color:purple; color:white;}
+	input[type=textarea] {width:360px; height:50px;}
+	input[type=radio]{width:auto;}
+	input[type=checkbox]{width:auto;}
+	div {margin: auto; padding: 10px; position: relative; left: 50px;}
+	body {font-family: "Times New Roman", Times, serif;}
+
+	
+    </style>
+	
+</head>
+<body>
+
+<form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" name="form" enctype="multipart/form-data">
+	<fieldset>
+	<legend>Your Face</legend>
+	<div>
+		<label for="image">Your Image: </label>
+		<input type="file" name="img" id="image">
+		<br>
+		<label for="preview">Image Preview: </label>
+		<img id="preview" name="preview"> 
+	</div>
+	</fieldset>
+
+	<fieldset>
+	
+	
+		<legend>Your General Details</legend>
+		<div>
+			<label for="name">Name:</label> 
+			<input type="text" name="name" id="name" required> <br>
+			<label for="gender">Gender: </label>
+			<input type="radio" name="gender" id="gender" value="male" required> Male
+			<input type="radio" name="gender" id="gender" value="female" required> Female
+			<br>
+			
+			<label for="age">Age:</label> 
+			 <input type="number" name="age" min="18" max="100" step="1" id="age" required> <br>
+			<label for="date">Date of Birth:</label>
+			<input type="date" name="date" min="01-01-1947" id="date"> <br>
+			<label for="favcolor">Favorite Color:</label>
+			<input type="color" name="favcolor" id="favcolor"> <br>
+			<label for="country">Country:</label>
+			<select "name="country" id="country">
+			  <option value="blank"></option>
+			  <option value="Canada">Canada</option>
+			  <option value="India">India</option>
+			  <option value="Spain">Spain</option>
+			  <option value="Brazil">Brazil</option>
+			  <option value="NewZealand">New Zealand</option>
+			<select>
+		</div>	 
+	</fieldset>
+	
+	<fieldset>
+	  
+		<legend>Your Indicators</legend>
+		<div>
+		<label for="height">Height: </label>
+		<span class="first">Short</span><input type="range" min="0" max="100" step="5" value="50" id="height" name="height"><span class="second">Tall</span><br>
+		<label for="salary">Salary: </label>
+		<span class="first">Poor</span><input type="range" min="0" max="100" step="5" value="50" id="salary" name="salary"><span class="second">Rich</span><br>
+	  </div>
+	</fieldset>
+	
+	<fieldset>
+	  
+		<legend>Your Contact Information</legend>
+		<div>
+		<label for="email">Email: </label>
+		<input type="email" name="email" id="name" required> <br>
+		<label for="mobile">Mobile: </label>
+		<input type="tel" name="mobile" id="mobile"><br>
+		<label for="address">Address: </label>
+		<input type="textarea" name="address" id="address"><br>
+		<label for="methtocontact">Method to contact you: </label>
+		<input type="checkbox" name="email" value="email" id="email">Email
+		<input type="checkbox" name="whatsapp" value="whatsapp" id="whatsapp">Whatsapp
+		<input type="checkbox" name="chat" value="chat" id="chat">In-House-Chat
+	  </div>	
+	</fieldset>
+	
+	<input type="submit" name="button" id="button" value="Submit">
+</form>
+
+</body>
+</html>

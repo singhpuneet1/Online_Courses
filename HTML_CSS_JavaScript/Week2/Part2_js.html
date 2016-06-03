@@ -1,0 +1,114 @@
+
+
+<html>
+<head>
+
+<title>Color Guessing Game - Part 2</title>
+
+
+
+</head>
+
+
+
+<body onload="do_game()">
+
+
+
+<script>
+var target;
+var no_guesses = 0;
+var finished = false;
+var guess_input_text;
+
+var colors = ["blue", "cyan", "gold", "gray", "green", "magenta", "orange", "red", "white", "yellow"]
+
+/*
+This is the main function that loads when the color guessing game starts.
+- It generates a random number.
+- Executes a while loop, until the entered user is same as the guessed one.
+*/
+function do_game(){
+	
+	//Generating a random number between 1 and 10, inclusive of 1 and 10.
+	var target_float = Math.random();
+	var target_still_float = target_float*10;
+	target = Math.floor(target_still_float) + 1;
+	
+	//Starting while loop to check if the guess is right or wrong
+	while(!finished){
+	guess_input_text = prompt("I am thinking of one of these colors:"+ "\n\n"+"blue, cyan, gold, gray, green, magenta, orange, red, white, yellow"+"\n\n"
+						+"What color I am thinking of?");
+	
+	no_guesses += 1;
+	finished = check_guess();
+	
+	}
+}
+/*
+The folowing function check if the guess made by the user is right or wrong:
+- Checks is the enetered input is a number or string. If number, asks user to enter string.
+- Checks if the entered input is the mentioned color list. If not, asks user to enter only those color that are in the list.
+- Checks if the enetred input is color present in the colors array. If yes:
+	- Checks if alphabetically higher and displays the appropriate message.
+	- Checks if alphabetically lower and displays the appropriate message.
+	- Checks if it the same color that I am thinking of and displays the appropriate message. 
+	  Once done, colors the background of the page same as the guessed one.
+
+*/
+function check_guess(){
+
+if(isNaN(guess_input_text) == false)
+	{
+		alert("Sorry, You have entered a number."+"\n\n"+ "Please try again.");
+		return false;
+	}
+else if(colors.lastIndexOf(guess_input_text)== -1)
+	{
+		alert("Sorry, I do not recognize your color."+"\n\n"+"Please try again.")
+		return false;
+	}
+
+else(colors.lastIndexOf(guess_input_text)!= -1)
+	{
+		if(guess_input_text>colors[target-1])
+		{
+			alert("Sorry, your guess is not correct!"+"\n\n"+"Hint: your color is alphabetically higher than mine."+"\n\nPlease try again.");
+			return false;
+			
+		}
+		else if(guess_input_text<colors[target-1])
+		{
+			alert("Sorry, your guess is not correct!"+"\n\n"+"Hint: your color is alphabetically lower than mine."+"\n\nPlease try again.");
+			return false;
+		}
+		
+		else(guess_input_text == colors[target-1])
+	{
+		myBody=document.getElementsByTagName("body")[0];
+		myBody.style.background=guess_input_text;
+		alert("Congratulations! You have guessed the color!"+"\n\n"+"It took you "+no_guesses+" guessess to finish the game!"+"\n\nYou can see the color in the background.")
+		
+		return true;
+	}
+	
+	}
+
+
+
+
+}
+
+
+</script>
+
+</body>
+
+
+
+
+
+
+
+
+</html>
